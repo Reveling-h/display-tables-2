@@ -76,27 +76,27 @@ WSGI_APPLICATION = 'displayTables.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-#          'default': {
-#          'ENGINE': 'django.db.backends.mysql',
-#          'NAME': 'Media_Data',  # The database you just created
-#          'USER': 'admin',     # Your RDS MySQL username
-#          'PASSWORD': 'socialMedia1',  # Your RDS MySQL password
-#          'HOST': 'social-media-db-v1.ctaoamggw23g.us-east-2.rds.amazonaws.com',  # The RDS endpoint
-#          'PORT': '3306',
-#      }
-# } 
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'my_database',  
-        'USER': 'root',  
-        'PASSWORD': 'mysqlpass',  
-        'HOST': '127.0.0.1',  
-        'PORT': '3306',  
-        'OPTIONS': {  
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
-        }  
-    }  
-}  
+         'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'Media_Data',  # The database you just created
+         'USER': 'admin',     # Your RDS MySQL username
+         'PASSWORD': 'socialMedia1',  # Your RDS MySQL password
+         'HOST': 'social-media-db-v1.ctaoamggw23g.us-east-2.rds.amazonaws.com',  # The RDS endpoint
+         'PORT': '3306',
+     }
+} 
+#     'default': {  
+#         'ENGINE': 'django.db.backends.mysql',  
+#         'NAME': 'my_database',  
+#         'USER': 'root',  
+#         'PASSWORD': 'mysqlpass',  
+#         'HOST': '127.0.0.1',  
+#         'PORT': '3306',  
+#         'OPTIONS': {  
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+#         }  
+#     }  
+# }  
 
 
 # Password validation
