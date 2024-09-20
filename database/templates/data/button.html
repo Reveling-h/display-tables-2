@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<style>
+    .div-top {
+        border:2px solid gray;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    button {
+        background-color: #f0f0f0;
+        color: #000000;
+        border: 1px solid #000000;
+        box-shadow: 4px 4px #dddad4;
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 15px;
+    }
+
+    body {
+      background-color: #ecebe9;
+    }
+
+    table {
+        color: solid gray;
+        box-shadow: 4px 4px #dddad4;
+    }
+
+    th, td {
+        border: 1px solid black;
+        border-radius: 10px;
+        border-color: solid gray;
+        padding: 5px;
+      }
+
+    tr:hover {background-color: #D6EEEE;}
+
+    .full-screen-div { 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        right: 0; 
+        bottom: 0; 
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+      } 
+
+</style>
+
+<html>
+<head>
+    <title>Core Circuit Software</title>
+</head>
+<body>
+    <h1>Core Circuit Software Tables</h1>
+<div class="div-top">
+    <h3>Users Table</h3>
+    <button id="show-use-table-button">Show Table</button>
+    <div id="use-table-container" style="display: none;">
+        <table border="1">
+            <tr>
+                <th>id</th>
+                <th>username</th>
+                <th>password</th>
+                <th>email</th>
+                <th>display name</th>
+                <th>profile picture</th>
+                <th>bio</th>
+                <th>background color</th>
+                <th>background image</th>
+                <th>created</th>
+            </tr>
+            {% for val in userData %}
+                <tr>
+                <td>{{val.userID}}</td>
+                <td>{{val.name}}</td>
+                <td>{{val.password}}</td>
+                <td>{{val.email}}</td>
+                <td>{{val.displayName}}</td>
+                <td>{{val.profilePicture}}</td>
+                <td>{{val.bio}}</td>
+                <td>{{val.backgroundColor}}</td>
+                <td>{{val.backgroundImage}}</td>
+                <td>{{val.created}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-use-table-button').addEventListener('click', function() {
+            var tableContainer = document.getElementById('use-table-container');
+            var button = document.getElementById('show-use-table-button');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>
+</div>
+<div class="div-top">
+    <h3>Friend Table</h3>
+    <button id="show-table-friend">Show Table</button>
+    <div id="friend-table-container" style="display: none;">
+        <table border="1">
+            <tr>
+                <th>friendshipID</th>
+                <th>user1</th>
+                <th>user2</th>
+                <th>friendDate</th>
+            </tr>
+            {% for val in friendData %}
+                <tr>
+                <td>{{val.friendshipID}}</td>
+                <td>{{val.user1}}</td>
+                <td>{{val.user2}}</td>
+                <td>{{val.friendDate}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('show-table-friend').addEventListener('click', function() {
+            var tableContainer = document.getElementById('friend-table-container');
+            var button = document.getElementById('show-table-friend');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>
+</div>
+<div class="div-top">
+    <h3>Friend Request Table</h3>
+    <button id="show-table-friend-request">Show Table</button>
+    <div id="friend-request-table-container" style="display: none;">
+        <table border="1">
+            <tr>
+                <th>requestID</th>
+                <th>user1</th>
+                <th>user2</th>
+                <th>requestDate</th>
+            </tr>
+            {% for val in friendRequestData %}
+                <tr>
+                <td>{{val.requestID}}</td>
+                <td>{{val.user1}}</td>
+                <td>{{val.user2}}</td>
+                <td>{{val.requestDate}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('show-table-friend-request').addEventListener('click', function() {
+            var tableContainer = document.getElementById('friend-request-table-container');
+            var button = document.getElementById('show-table-friend-request');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>
+</div>
+<div class="div-top">
+    <h3>Post Table</h3>
+    <button id="show-table-post">Show Table</button>
+    <div id="post-table-container" style="display: none;">
+        <table border="1">
+            <tr>
+                <th>postID</th>
+                <th>user</th>
+                <th>community</th>
+                <th>postDate</th>
+                <th>title</th>
+                <th>description</th>
+                <th>postDate</th>
+                <th>hasEdit</th>
+                <th>editDate</th>
+            </tr>
+            {% for val in postData %}
+                <tr>
+                <td>{{val.postID}}</td>
+                <td>{{val.user}}</td>
+                <td>{{val.community}}</td>
+                <td>{{val.postDate}}</td>
+                <td>{{val.title}}</td>
+                <td>{{val.description}}</td>
+                <td>{{val.postDate}}</td>
+                <td>{{val.hasEdit}}</td>
+                <td>{{val.editDate}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('show-table-post').addEventListener('click', function() {
+            var tableContainer = document.getElementById('post-table-container');
+            var button = document.getElementById('show-table-post');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>
+</div>
+<div class="div-top">
+    <h3>Media Table</h3>
+    <button id="show-table-media">Show Table</button>
+    <div id="media-table-container" style="display: none;">
+        <table border="1">
+            <tr>
+                <th>mediaID</th>
+                <th>post</th>
+                <th>mediaType</th>
+                <th>mediaURL</th>
+            </tr>
+            {% for val in mediaData %}
+                <tr>
+                <td>{{val.mediaID}}</td>
+                <td>{{val.post}}</td>
+                <td>{{val.mediaType}}</td>
+                <td>{{val.mediaURL}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('show-table-media').addEventListener('click', function() {
+            var tableContainer = document.getElementById('media-table-container');
+            var button = document.getElementById('show-table-media');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>
+</div>
+<div class="div-top">
+    <h3>Post Vote Table</h3>
+    <button id="show-table-postVoteData">Show Table</button>
+    <div id="postVoteData-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>post</th>
+            <th>user</th>
+            <th>vote</th>
+        </tr>
+        {% for val in postVoteData %}
+            <tr>
+            <td>{{val.voteID}}</td>
+            <td>{{val.post}}</td>
+            <td>{{val.user}}</td>
+            <td>{{val.vote}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-postVoteData').addEventListener('click', function() {
+            var tableContainer = document.getElementById('postVoteData-table-container');
+            var button = document.getElementById('show-table-postVoteData');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Comment Table</h3>
+    <button id="show-table-comment">Show Table</button>
+    <div id="comment-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>post</th>
+            <th>user</th>
+            <th>commentDate</th>
+            <th>commentContent</th>
+            <th>replyTo</th>
+            <th>hasEdit</th>
+            <th>editDate</th>
+        </tr>
+        {% for val in commentData %}
+            <tr>
+                <td>{{val.commentID}}</td>
+                <td>{{val.post}}</td>
+                <td>{{val.user}}</td>
+                <td>{{val.commentDate}}</td>
+                <td>{{val.commentContent}}</td>
+                <td>{{val.replyTo}}</td>
+                <td>{{val.hasEdit}}</td>
+                <td>{{val.editDate}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-comment').addEventListener('click', function() {
+            var tableContainer = document.getElementById('comment-table-container');
+            var button = document.getElementById('show-table-comment');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Comment Vote Table</h3>
+    <button id="show-table-comment-vote">Show Table</button>
+    <div id="comment-vote-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>comment</th>
+            <th>user</th>
+            <th>vote</th>
+        </tr>
+        {% for val in commentVoteData %}
+            <tr>
+                <td>{{val.voteID}}</td>
+                <td>{{val.comment}}</td>
+                <td>{{val.user}}</td>
+                <td>{{val.vote}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-comment-vote').addEventListener('click', function() {
+            var tableContainer = document.getElementById('comment-vote-table-container');
+            var button = document.getElementById('show-table-comment-vote');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Community Table</h3>
+    <button id="show-table-community">Show Table</button>
+    <div id="community-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>description</th>
+            <th>iconURL</th>
+            <th>created</th>
+        </tr>
+        {% for val in communityData %}
+            <tr>
+                <td>{{val.communityID}}</td>
+                <td>{{val.name}}</td>
+                <td>{{val.description}}</td>
+                <td>{{val.iconURL}}</td>
+                <td>{{val.created}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-community').addEventListener('click', function() {
+            var tableContainer = document.getElementById('community-table-container');
+            var button = document.getElementById('show-table-community');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Community Membership Table</h3>
+    <button id="show-table-community-membership">Show Table</button>
+    <div id="community-membership-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>user</th>
+            <th>community</th>
+            <th>joinDate</th>
+            <th>role</th>
+        </tr>
+        {% for val in communtiyMembershipData %}
+            <tr>
+                <td>{{val.membershipID}}</td>
+                <td>{{val.user}}</td>
+                <td>{{val.community}}</td>
+                <td>{{val.joinDate}}</td>
+                <td>{{val.role}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-community-membership').addEventListener('click', function() {
+            var tableContainer = document.getElementById('community-membership-table-container');
+            var button = document.getElementById('show-table-community-membership');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Community Post Table</h3>
+    <button id="show-table-convo">Show Table</button>
+    <div id="convo-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>convoName</th>
+            <th>created</th>
+        </tr>
+        {% for val in convoData %}
+            <tr>
+                <td>{{val.convoID}}</td>
+                <td>{{val.convoName}}</td>
+                <td>{{val.created}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-convo').addEventListener('click', function() {
+            var tableContainer = document.getElementById('convo-table-container');
+            var button = document.getElementById('show-table-convo');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Convo Participant Table</h3>
+    <button id="show-table-convo-participant">Show Table</button>
+    <div id="convo-participant-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>user</th>
+            <th>convo</th>
+        </tr>
+        {% for val in convoParticipantData %}
+            <tr>
+                <td>{{val.participantID}}</td>
+                <td>{{val.user}}</td>
+                <td>{{val.convo}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-convo-participant').addEventListener('click', function() {
+            var tableContainer = document.getElementById('convo-participant-table-container');
+            var button = document.getElementById('show-table-convo-participant');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Message Table</h3>
+    <button id="show-table-message">Show Table</button>
+    <div id="message-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>convo</th>
+            <th>sender</th>
+            <th>messageDate</th>
+            <th>message</th>
+        </tr>
+        {% for val in messageData %}
+            <tr>
+                <td>{{val.messageID}}</td>
+                <td>{{val.convo}}</td>
+                <td>{{val.sender}}</td>
+                <td>{{val.messageDate}}</td>
+                <td>{{val.message}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-message').addEventListener('click', function() {
+            var tableContainer = document.getElementById('message-table-container');
+            var button = document.getElementById('show-table-message');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+<div class="div-top">
+    <h3>Convo Setting Table</h3>
+    <button id="show-table-convo-setting">Show Table</button>
+    <div id="convo-setting-table-container" style="display: none;">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>convo</th>
+            <th>user</th>
+            <th>isMuted</th>
+            <th>isPinned</th>
+        </tr>
+        {% for val in convoSettingData %}
+            <tr>
+                <td>{{val.settingID}}</td>
+                <td>{{val.convo}}</td>
+                <td>{{val.user}}</td>
+                <td>{{val.isMuted}}</td>
+                <td>{{val.isPinned}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.getElementById('show-table-convo-setting').addEventListener('click', function() {
+            var tableContainer = document.getElementById('convo-setting-table-container');
+            var button = document.getElementById('show-table-convo-setting');
+
+            if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+                tableContainer.style.display = 'block';
+                button.textContent = 'Hide Table';
+            } else {
+                tableContainer.style.display = 'none';
+                button.textContent = 'Show Table';
+            }
+        });
+    </script>    
+</div>
+</body>
+<p>© 2024 Core Circuit Software</p>
+<a href="https://corecircuitsoftware.github.io">About us</a>
+</html>

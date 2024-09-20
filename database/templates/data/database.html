@@ -1,0 +1,29 @@
+<style>
+    th {
+        border: solid 2px lightgrey;
+    }
+    td {
+        border: solid 2px lightgrey;
+    }
+    </style>
+<div id="return">
+    <a href="/">Back</a>
+</div>
+
+<div id="database">
+    <h3>Database</h3>
+    <table id="data">
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>date created</th>
+        </tr>
+        {% for val in data %}
+            <tr>
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.created}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
