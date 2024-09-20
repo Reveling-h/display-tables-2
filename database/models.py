@@ -71,7 +71,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     commentDate = models.DateTimeField(auto_now_add=True)
     commentContent = models.CharField(max_length=255)
-    replyTo = models.ForeignKey('self', on_delete=models.CASCADE, null=True) #now foreign key?
+    replyTo = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True) #now foreign key?
     hasEdit = models.BooleanField(default=False)
     editDate = models.DateTimeField(null=True)
 
@@ -112,16 +112,16 @@ class Convo(models.Model):
     convoName = models.CharField(max_length=20, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
-    # def __str__(self):
-    #     return self.convoID
+    def __str__(self):
+         return "convo"
     
 class ConvoParticipant(models.Model):
     participantID = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     convo = models.ForeignKey(Convo, on_delete=models.CASCADE)
 
-    # def __str__(self):
-    #     return self.participantID
+    def __str__(self):
+        return "participant"
     
 class Message(models.Model): #add editing?
     messageID = models.AutoField(primary_key=True)
@@ -130,8 +130,8 @@ class Message(models.Model): #add editing?
     messageDate = models.DateTimeField(auto_now_add=True)
     message = models.CharField(max_length=255)
 
-    # def __str__(self):
-    #     return self.messageID
+    def __str__(self):
+        return self.messageID
     
 class ConvoSetting(models.Model):
     settingID = models.AutoField(primary_key=True)
@@ -140,5 +140,5 @@ class ConvoSetting(models.Model):
     isMuted = models.BooleanField(default=False)
     isPinned = models.BooleanField(default=False)
 
-    # def __str__(self):
-    #     return self.settingID
+    def __str__(self):
+         return "setting"

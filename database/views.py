@@ -12,6 +12,7 @@ def index(request):
     friendRequestData = FriendRequest.objects.all()
     postData = Post.objects.all()
     postVoteData = PostVote.objects.all()
+    mediaData = Media.objects.all()
     commentData = Comment.objects.all()
     commentVoteData = CommentVote.objects.all()
     communityData = Community.objects.all()
@@ -22,7 +23,7 @@ def index(request):
     ConvoSettingData = ConvoSetting.objects.all()
     
 
-    context = {'userData':userData,'friendData':friendData,'friendRequestData':friendRequestData,'postData':postData,'postVoteData':postVoteData, 'commentData':commentData, 'commentVoteData':commentVoteData, 'communityData':communityData, 'communityMembershipData':communityMembershipData, 'convoData':convoData, 'ConvoParticipantData':ConvoParticipantData, 'messageData':messageData, 'ConvoSettingData':ConvoSettingData}
+    context = {'userData':userData,'friendData':friendData,'mediaData':mediaData,'friendRequestData':friendRequestData,'postData':postData,'postVoteData':postVoteData, 'commentData':commentData, 'commentVoteData':commentVoteData, 'communityData':communityData, 'communityMembershipData':communityMembershipData, 'convoData':convoData, 'ConvoParticipantData':ConvoParticipantData, 'messageData':messageData, 'ConvoSettingData':ConvoSettingData}
     return render(request, 'data/button.html',context)
 
 

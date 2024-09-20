@@ -427,7 +427,7 @@
             <th>joinDate</th>
             <th>role</th>
         </tr>
-        {% for val in communtiyMembershipData %}
+        {% for val in communityMembershipData %}
             <tr>
                 <td>{{val.membershipID}}</td>
                 <td>{{val.user}}</td>
@@ -497,7 +497,7 @@
             <th>user</th>
             <th>convo</th>
         </tr>
-        {% for val in convoParticipantData %}
+        {% for val in ConvoParticipantData %}
             <tr>
                 <td>{{val.participantID}}</td>
                 <td>{{val.user}}</td>
@@ -571,7 +571,7 @@
             <th>isMuted</th>
             <th>isPinned</th>
         </tr>
-        {% for val in convoSettingData %}
+        {% for val in ConvoSettingData %}
             <tr>
                 <td>{{val.settingID}}</td>
                 <td>{{val.convo}}</td>
